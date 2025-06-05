@@ -102,7 +102,7 @@ const Index = () => {
           <div className="min-h-screen flex items-center justify-center bg-gray-100 dark:bg-gray-900">
             <div className="text-center">
               <RefreshCw size={48} className="text-primary mx-auto mb-4 animate-spin" />
-              <p className="text-gray-600 dark:text-gray-400">Loading...</p>
+              <p className="text-gray-600 dark:text-gray-400">جاري التحميل...</p>
             </div>
           </div>
         );
@@ -127,10 +127,10 @@ const Index = () => {
           <div className="flex items-center justify-center h-screen bg-gray-50 dark:bg-gray-900">
             <div className="text-center p-8">
               <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-                Add Listing
+                إضافة إعلان
               </h2>
               <p className="text-gray-600 dark:text-gray-400">
-                Feature coming soon...
+                هذه الميزة قريباً...
               </p>
             </div>
           </div>
@@ -141,10 +141,10 @@ const Index = () => {
           <div className="flex items-center justify-center h-screen bg-gray-50 dark:bg-gray-900">
             <div className="text-center p-8">
               <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-                My Swaps
+                مقايضاتي
               </h2>
               <p className="text-gray-600 dark:text-gray-400">
-                Feature coming soon...
+                هذه الميزة قريباً...
               </p>
             </div>
           </div>
@@ -155,10 +155,10 @@ const Index = () => {
           <div className="flex items-center justify-center h-screen bg-gray-50 dark:bg-gray-900">
             <div className="text-center p-8">
               <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-                Chats
+                المحادثات
               </h2>
               <p className="text-gray-600 dark:text-gray-400">
-                Feature coming soon...
+                هذه الميزة قريباً...
               </p>
             </div>
           </div>

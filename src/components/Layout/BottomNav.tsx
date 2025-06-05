@@ -9,11 +9,11 @@ interface BottomNavProps {
 
 const BottomNav: React.FC<BottomNavProps> = ({ activeTab, onTabChange }) => {
   const tabs = [
-    { id: 'home', icon: Home, label: 'الرئيسية', labelEn: 'Home' },
-    { id: 'add', icon: Plus, label: 'إضافة', labelEn: 'Add' },
-    { id: 'swaps', icon: RefreshCw, label: 'مقايضاتي', labelEn: 'My Swaps' },
-    { id: 'chats', icon: MessageSquare, label: 'المحادثات', labelEn: 'Chats' },
-    { id: 'profile', icon: User, label: 'الملف الشخصي', labelEn: 'Profile' },
+    { id: 'home', icon: Home, label: 'الرئيسية' },
+    { id: 'add', icon: Plus, label: 'إضافة' },
+    { id: 'swaps', icon: RefreshCw, label: 'مقايضاتي' },
+    { id: 'chats', icon: MessageSquare, label: 'المحادثات' },
+    { id: 'profile', icon: User, label: 'الملف الشخصي' },
   ];
 
   return (
@@ -34,7 +34,7 @@ const BottomNav: React.FC<BottomNavProps> = ({ activeTab, onTabChange }) => {
               }`}
             >
               <Icon size={20} />
-              <span className="text-xs mt-1 font-medium">{tab.labelEn}</span>
+              <span className="text-xs mt-1 font-medium">{tab.label}</span>
             </button>
           );
         })}

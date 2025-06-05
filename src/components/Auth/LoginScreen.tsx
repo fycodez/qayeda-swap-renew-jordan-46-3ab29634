@@ -38,7 +38,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ onBack, onLogin, onForgotPass
           <ArrowLeft size={20} className="text-gray-600 dark:text-gray-400" />
         </button>
         <h1 className="text-lg font-semibold text-gray-900 dark:text-white ml-3">
-          Login
+          تسجيل الدخول
         </h1>
       </div>
 
@@ -46,36 +46,36 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ onBack, onLogin, onForgotPass
         <div className="max-w-sm mx-auto">
           <div className="text-center mb-8">
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-              Welcome Back
+              أهلاً بعودتك
             </h2>
             <p className="text-gray-600 dark:text-gray-400">
-              Sign in to continue your swapping journey
+              سجل دخولك لمتابعة رحلة التبادل
             </p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <Label htmlFor="email">Email or Phone Number</Label>
+              <Label htmlFor="email">البريد الإلكتروني أو رقم الهاتف</Label>
               <Input
                 id="email"
                 type="text"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your email or phone"
+                placeholder="أدخل بريدك الإلكتروني أو رقم هاتفك"
                 className="h-12 mt-1"
                 required
               />
             </div>
 
             <div>
-              <Label htmlFor="password">Password</Label>
+              <Label htmlFor="password">كلمة المرور</Label>
               <div className="relative mt-1">
                 <Input
                   id="password"
                   type={showPassword ? 'text' : 'password'}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  placeholder="Enter your password"
+                  placeholder="أدخل كلمة المرور"
                   className="h-12 pr-10"
                   required
                 />
@@ -95,7 +95,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ onBack, onLogin, onForgotPass
                 onClick={onForgotPassword}
                 className="text-primary hover:text-primary/80 text-sm font-medium"
               >
-                Forgot Password?
+                نسيت كلمة المرور؟
               </button>
             </div>
 
@@ -104,7 +104,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ onBack, onLogin, onForgotPass
               className="w-full h-12 text-base font-medium bg-primary hover:bg-primary/90"
               disabled={isLoading}
             >
-              {isLoading ? 'Signing in...' : 'Login'}
+              {isLoading ? 'جاري تسجيل الدخول...' : 'تسجيل الدخول'}
             </Button>
           </form>
         </div>

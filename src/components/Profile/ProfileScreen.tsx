@@ -19,7 +19,7 @@ const ProfileScreen: React.FC<ProfileScreenProps> = ({
 }) => {
   // Mock user data
   const user = {
-    name: 'Ahmed Al-Mansouri',
+    name: 'أحمد المنصوري',
     email: 'ahmed.mansouri@email.com',
     phone: '+962 79 123 4567',
     avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face',
@@ -30,21 +30,21 @@ const ProfileScreen: React.FC<ProfileScreenProps> = ({
   const menuItems = [
     {
       id: 'edit',
-      title: 'Edit Profile',
+      title: 'تعديل الملف الشخصي',
       icon: Edit,
       onClick: onEditProfile,
       color: 'text-gray-700 dark:text-gray-300'
     },
     {
       id: 'listings',
-      title: 'My Listings',
+      title: 'إعلاناتي',
       icon: List,
       onClick: onMyListings,
       color: 'text-gray-700 dark:text-gray-300'
     },
     {
       id: 'settings',
-      title: 'Settings',
+      title: 'الإعدادات',
       icon: Settings,
       onClick: onSettings,
       color: 'text-gray-700 dark:text-gray-300'
@@ -53,7 +53,7 @@ const ProfileScreen: React.FC<ProfileScreenProps> = ({
 
   return (
     <div className="flex flex-col h-screen bg-gray-50 dark:bg-gray-900">
-      <Header title="Profile" />
+      <Header title="الملف الشخصي" />
 
       <div className="flex-1 overflow-y-auto pb-20">
         {/* Profile Info */}
@@ -70,22 +70,22 @@ const ProfileScreen: React.FC<ProfileScreenProps> = ({
               </div>
             </div>
             
-            <div className="flex-1">
+            <div className="flex-1 text-right">
               <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-1">
                 {user.name}
               </h2>
               <p className="text-gray-600 dark:text-gray-400 text-sm mb-2">
                 {user.email}
               </p>
-              <div className="flex items-center space-x-4 rtl:space-x-reverse">
+              <div className="flex items-center justify-end space-x-4 rtl:space-x-reverse">
                 <div className="flex items-center">
-                  <Star size={16} className="text-yellow-400 mr-1 rtl:ml-1 rtl:mr-0" fill="currentColor" />
+                  <Star size={16} className="text-yellow-400 ml-1 rtl:mr-1 rtl:ml-0" fill="currentColor" />
                   <span className="text-sm font-medium text-gray-900 dark:text-white">
                     {user.rating}
                   </span>
                 </div>
                 <div className="text-sm text-gray-600 dark:text-gray-400">
-                  {user.totalSwaps} swaps completed
+                  {user.totalSwaps} مقايضة مكتملة
                 </div>
               </div>
             </div>
@@ -104,20 +104,20 @@ const ProfileScreen: React.FC<ProfileScreenProps> = ({
                 className="w-full bg-white dark:bg-gray-800 rounded-xl p-4 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200 border border-gray-100 dark:border-gray-700"
               >
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-3 rtl:space-x-reverse">
-                    <Icon size={20} className={item.color} />
-                    <span className="font-medium text-gray-900 dark:text-white">
-                      {item.title}
-                    </span>
-                  </div>
                   <svg
-                    className="w-5 h-5 text-gray-400"
+                    className="w-5 h-5 text-gray-400 transform rotate-180"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
                   >
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
+                  <div className="flex items-center space-x-3 rtl:space-x-reverse">
+                    <span className="font-medium text-gray-900 dark:text-white">
+                      {item.title}
+                    </span>
+                    <Icon size={20} className={item.color} />
+                  </div>
                 </div>
               </button>
             );
@@ -131,8 +131,8 @@ const ProfileScreen: React.FC<ProfileScreenProps> = ({
             variant="outline"
             className="w-full h-12 border-red-200 dark:border-red-800 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20"
           >
-            <LogOut size={20} className="mr-2 rtl:ml-2 rtl:mr-0" />
-            Logout
+            <LogOut size={20} className="ml-2 rtl:mr-2 rtl:ml-0" />
+            تسجيل الخروج
           </Button>
         </div>
       </div>
