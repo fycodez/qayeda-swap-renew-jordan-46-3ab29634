@@ -13,6 +13,8 @@ import BottomNav from '@/components/Layout/BottomNav';
 import HomeScreen from '@/components/Home/HomeScreen';
 import ProfileScreen from '@/components/Profile/ProfileScreen';
 import SettingsScreen from '@/components/Settings/SettingsScreen';
+import NotificationsScreen from '@/components/Notifications/NotificationsScreen';
+import AddListingScreen from '@/components/AddListing/AddListingScreen';
 
 const Index = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -65,11 +67,24 @@ const Index = () => {
     setCurrentScreen('profile');
   };
 
-  // Mock handlers for features to be implemented
-  const handleNotifications = () => {
-    console.log('Open notifications');
+  const handleBackToHome = () => {
+    setCurrentScreen('home');
+    setActiveTab('home');
   };
 
+  // Updated handlers for notifications and add listing
+  const handleNotifications = () => {
+    setCurrentScreen('notifications');
+  };
+
+  const handlePublishListing = (listing: any) => {
+    console.log('Publishing listing:', listing);
+    // Here you would typically save the listing to your backend
+    setCurrentScreen('home');
+    setActiveTab('home');
+  };
+
+  // Mock handlers for features to be implemented
   const handleCategorySelect = (category: string) => {
     console.log('Selected category:', category);
   };
@@ -145,16 +160,17 @@ const Index = () => {
       
       case 'add':
         return (
-          <div className="flex items-center justify-center h-screen bg-gray-50 dark:bg-gray-900">
-            <div className="text-center p-8">
-              <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-                إضافة إعلان
-              </h2>
-              <p className="text-gray-600 dark:text-gray-400">
-                هذه الميزة قريباً...
-              </p>
-            </div>
-          </div>
+          <AddListingScreen
+            onBack={handleBackToHome}
+            onPublish={handlePublishListing}
+          />
+        );
+      
+      case 'notifications':
+        return (
+          <NotificationsScreen
+            onBack={handleBackToHome}
+          />
         );
       
       case 'swaps':
@@ -220,7 +236,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       {renderMainScreen()}
-      {!['settings'].includes(currentScreen) && (
+      {!['settings', 'notifications', 'add'].includes(currentScreen) && (
         <BottomNav activeTab={activeTab} onTabChange={handleTabChange} />
       )}
     </div>
