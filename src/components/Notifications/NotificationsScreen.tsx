@@ -1,13 +1,15 @@
 
 import React from 'react';
-import { ArrowLeft, Bell, User, RefreshCw, MessageSquare } from 'lucide-react';
+import { ArrowLeft, Bell, User, RefreshCw, MessageSquare, Check, X } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import Header from '../Layout/Header';
 
 interface NotificationsScreenProps {
   onBack: () => void;
+  onOpenChat?: (notificationId: number) => void;
 }
 
-const NotificationsScreen: React.FC<NotificationsScreenProps> = ({ onBack }) => {
+const NotificationsScreen: React.FC<NotificationsScreenProps> = ({ onBack, onOpenChat }) => {
   const notifications = [
     {
       id: 1,
@@ -29,9 +31,9 @@ const NotificationsScreen: React.FC<NotificationsScreenProps> = ({ onBack }) => 
     },
     {
       id: 3,
-      type: 'swap_accepted',
-      title: 'تم قبول المقايضة',
-      message: 'تم قبول طلب مقايضتك للكاميرا',
+      type: 'swap_request',
+      title: 'طلب مقايضة جديد',
+      message: 'سارة تريد مقايضة ساعتها مع كاميراك',
       time: 'منذ يومين',
       read: true,
       icon: RefreshCw
@@ -46,6 +48,18 @@ const NotificationsScreen: React.FC<NotificationsScreenProps> = ({ onBack }) => 
       icon: User
     }
   ];
+
+  const handleAccept = (notificationId: number) => {
+    console.log('Accepted notification:', notificationId);
+    if (onOpenChat) {
+      onOpenChat(notificationId);
+    }
+  };
+
+  const handleReject = (notificationId: number) => {
+    console.log('Rejected notification:', notificationId);
+    // Here you would typically update the notification status
+  };
 
   return (
     <div className="flex flex-col h-screen bg-gray-50 dark:bg-gray-900">
@@ -70,6 +84,8 @@ const NotificationsScreen: React.FC<NotificationsScreenProps> = ({ onBack }) => 
           <div className="divide-y divide-gray-200 dark:divide-gray-700">
             {notifications.map((notification) => {
               const Icon = notification.icon;
+              const isSwapRequest = notification.type === 'swap_request';
+              
               return (
                 <div
                   key={notification.id}
@@ -108,6 +124,28 @@ const NotificationsScreen: React.FC<NotificationsScreenProps> = ({ onBack }) => 
                       <p className="text-xs text-gray-500 dark:text-gray-500 mt-2 text-right">
                         {notification.time}
                       </p>
+                      
+                      {isSwapRequest && (
+                        <div className="flex gap-2 mt-3">
+                          <Button
+                            size="sm"
+                            onClick={() => handleAccept(notification.id)}
+                            className="bg-green-500 hover:bg-green-600 text-white"
+                          >
+                            <Check size={16} className="ml-1" />
+                            قبول
+                          </Button>
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            onClick={() => handleReject(notification.id)}
+                            className="border-red-300 text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20"
+                          >
+                            <X size={16} className="ml-1" />
+                            رفض
+                          </Button>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>

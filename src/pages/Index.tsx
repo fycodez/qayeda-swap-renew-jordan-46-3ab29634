@@ -15,12 +15,14 @@ import ProfileScreen from '@/components/Profile/ProfileScreen';
 import SettingsScreen from '@/components/Settings/SettingsScreen';
 import NotificationsScreen from '@/components/Notifications/NotificationsScreen';
 import AddListingScreen from '@/components/AddListing/AddListingScreen';
+import ChatScreen from '@/components/Chat/ChatScreen';
 
 const Index = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [currentScreen, setCurrentScreen] = useState('welcome');
   const [activeTab, setActiveTab] = useState('home');
   const [darkMode, setDarkMode] = useState(false);
+  const [currentChatId, setCurrentChatId] = useState<number | undefined>();
 
   // Apply dark mode class to document
   useEffect(() => {
@@ -74,6 +76,15 @@ const Index = () => {
 
   // Updated handlers for notifications and add listing
   const handleNotifications = () => {
+    setCurrentScreen('notifications');
+  };
+
+  const handleOpenChat = (notificationId: number) => {
+    setCurrentChatId(notificationId);
+    setCurrentScreen('chat');
+  };
+
+  const handleBackToNotifications = () => {
     setCurrentScreen('notifications');
   };
 
@@ -170,35 +181,16 @@ const Index = () => {
         return (
           <NotificationsScreen
             onBack={handleBackToHome}
+            onOpenChat={handleOpenChat}
           />
         );
       
-      case 'swaps':
+      case 'chat':
         return (
-          <div className="flex items-center justify-center h-screen bg-gray-50 dark:bg-gray-900">
-            <div className="text-center p-8">
-              <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-                مقايضاتي
-              </h2>
-              <p className="text-gray-600 dark:text-gray-400">
-                هذه الميزة قريباً...
-              </p>
-            </div>
-          </div>
-        );
-      
-      case 'chats':
-        return (
-          <div className="flex items-center justify-center h-screen bg-gray-50 dark:bg-gray-900">
-            <div className="text-center p-8">
-              <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-                المحادثات
-              </h2>
-              <p className="text-gray-600 dark:text-gray-400">
-                هذه الميزة قريباً...
-              </p>
-            </div>
-          </div>
+          <ChatScreen
+            onBack={handleBackToNotifications}
+            chatId={currentChatId}
+          />
         );
       
       case 'profile':
@@ -236,7 +228,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       {renderMainScreen()}
-      {!['settings', 'notifications', 'add'].includes(currentScreen) && (
+      {!['settings', 'notifications', 'add', 'chat'].includes(currentScreen) && (
         <BottomNav activeTab={activeTab} onTabChange={handleTabChange} />
       )}
     </div>
