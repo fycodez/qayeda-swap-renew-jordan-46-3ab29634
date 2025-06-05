@@ -1,10 +1,10 @@
-
 import React, { useState, useEffect } from 'react';
 import { RefreshCw } from 'lucide-react';
 
 // Auth Components
 import WelcomeScreen from '@/components/Auth/WelcomeScreen';
 import LoginScreen from '@/components/Auth/LoginScreen';
+import SignupScreen from '@/components/Auth/SignupScreen';
 
 // Layout Components
 import BottomNav from '@/components/Layout/BottomNav';
@@ -32,6 +32,19 @@ const Index = () => {
   // Auth handlers
   const handleLogin = (credentials: { email: string; password: string }) => {
     console.log('Login attempt:', credentials);
+    setIsAuthenticated(true);
+    setCurrentScreen('home');
+  };
+
+  const handleSignup = (userData: {
+    fullName: string;
+    email: string;
+    phone: string;
+    password: string;
+    confirmPassword: string;
+    agreeToTerms: boolean;
+  }) => {
+    console.log('Signup attempt:', userData);
     setIsAuthenticated(true);
     setCurrentScreen('home');
   };
@@ -94,6 +107,14 @@ const Index = () => {
             onBack={() => setCurrentScreen('welcome')}
             onLogin={handleLogin}
             onForgotPassword={() => setCurrentScreen('forgot')}
+          />
+        );
+      
+      case 'signup':
+        return (
+          <SignupScreen
+            onBack={() => setCurrentScreen('welcome')}
+            onSignup={handleSignup}
           />
         );
       
