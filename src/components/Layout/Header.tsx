@@ -1,6 +1,5 @@
-
 import React from 'react';
-import { ArrowLeft, Bell } from 'lucide-react';
+import { ArrowLeft, Bell, RefreshCw } from 'lucide-react';
 
 interface HeaderProps {
   title?: string;
